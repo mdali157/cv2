@@ -15,19 +15,19 @@ def addpic(request):
     if request.method == 'POST':
         form = forms.addProfilepic(request.POST, request.FILES)
         if form.is_valid():
-            obj = Profile.objects.get(id=id)
+            obj = Profile.objects.get(user=request.user)
             r = form.save()
             print("---------- 1st")
-
+            print(request.FILES['picture'].name)
             obj.profile_pic = request.FILES['picture'].name
 
             print("----------")
             obj.save()
+            request.method='GET'
             return newProfile(request)
     else:
         form = forms.addProfilepic()
-    return render(request, 'dashboard/add_employee_pic.html', {'form': form, 'id': id})
-
+    return newProfile(request)
 
 
 @login_required(login_url='/accounts/login')
@@ -149,10 +149,11 @@ def update_profile(request):
             skl.save()
             profile.skills.add(skl)
             profile.save()
-
-        detail = Profile.objects.filter(user=request.user).first()
-        return render(request, 'dashboard/profile_view.html', {'id': id, 'detail': detail})
-        # return newProfile(request)
+        #
+        # detail = Profile.objects.filter(user=request.user).first()
+        # return render(request, 'dashboard/profile_view.html', {'id': id, 'detail': detail})
+        request.method = 'GET'
+        return newProfile(request)
     return render(request, 'dashboard/profile_update.html', {'profile': profile, 'id': id})
 
 

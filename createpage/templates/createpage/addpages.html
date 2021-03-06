@@ -5,6 +5,11 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" xmlns="http://www.w3.org/1999/html">
         <div class="row">
+         <div class="col-lg-2">
+                <div class="card" style="width: 10rem; border-color: white">
+                    <a href="{% url 'dashboard:selectcv' %}">  <img  class="card-img-top" src="{% static 'newplus.jpeg' %}" alt="Card image cap">
+                </div>
+            </div>
 
             {% for cv in cv %}
 
@@ -24,13 +29,8 @@
             {% endfor %}
 
 
-            <div class="col-lg-2">
-                <div class="card" style="width: 10rem; border-color: white">
-                    <a href="{% url 'dashboard:selectcv' %}">  <img  class="card-img-top" src="{% static 'newplus.jpeg' %}" alt="Card image cap">
-                </div>
-            </div>
-
         </div>
+    <br>
 
             <div class="row">
 
@@ -43,8 +43,8 @@
                         <a  href="{% url 'dashboard:generateblackcv' cv2.id %}" ><img style="height: 158px; width: 158px" class="card-img-top" src="{% static 'Capture.jpg' %}" alt="Card image cap"></a>
 
                         <div class="card-body " style="text-align: center;">
-                            {% for title in cv2.title.all %}
-                                <a style=" color: black; " href="{% url 'dashboard:generateblackcv' cv2.id %}" >  <h7 class="card-title">{{ title.resumetitle}}</h7></a>
+                            {% for title in cv2.titlecv2.all %}
+                                <a style=" color: black; " href="{% url 'dashboard:generateblackcv' cv2.id %}" >  <h7 class="card-title">{{ title.titcv2}}</h7></a>
                             {% endfor %}
                         </div>
                     </div>
@@ -52,11 +52,7 @@
             {% endfor %}
 
 
-            <div class="col-lg-2">
-                <div class="card" style="width: 10rem; border-color: white">
-                    <a href="{% url 'dashboard:selectcv' %}">  <img  class="card-img-top" src="{% static 'newplus.jpeg' %}" alt="Card image cap">
-                </div>
-            </div>
+
 
         </div>
 
