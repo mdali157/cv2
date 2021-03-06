@@ -1,0 +1,152 @@
+{% extends 'basetemplate.html' %}
+{% load static %}
+
+{% block content  %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+
+     <a  href="{% url 'dashboard:printcv' cv.id %}"  target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fas fa-print"></i> Print CV</a>
+
+        <form  class="form-group " action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div style="display: flex;">
+
+            </div>
+            <div class="row" >
+                <div class="col-8" >
+                    <span></span>
+                </div>
+                <div class="col-4" style="display: flex;text-align: center;margin-bottom: 4px;" >
+                    <i class="fas fa-envelope fa-2x" style="margin-right: 4px;color: #190080;"></i>
+
+                    <h6>{{ detail.email }}</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8" >
+                    <span></span>
+                </div>
+                <div class="col-4" style="display: flex;text-align: center;margin-bottom: 4px" >
+                    <i class="fas fa-phone-square-alt fa-2x" style="margin-right: 4px;color: #190080;"></i>
+                    <h6>{{ detail.contactno1 }}</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8" >
+                    <span></span>
+                </div>
+                <div class="col-4" style="display: flex;text-align: center" >
+                    <i class="fas fa-map-marker-alt fa-2x" style="margin-right: 4px;color: #190080;"></i>
+                    <h5>{{ detail.address }}</h5>
+                </div>
+            </div>
+
+            <div class="row" style="margin-left: 40px ">
+                <div class="col-6" >
+
+                    <h2>{{ detail.name}}</h2>
+                    <div class="row" style="margin-left: 1px ">
+                        {% for cer in cv.certificate.all %}
+                            <h6>  {{  cer.cert }} | </h6>
+                        {% endfor %}
+                    </div>
+                    {% for pro in cv.profession.all %}
+                        <h6>{{ pro.profession}}</h6>
+                    {% endfor %}
+                    {#                    <h6>{{ detail.contactno1 }}</h6>#}
+                    <h6>{{ detail.linkedin }}</h6>
+                </div>
+            </div>
+            <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:40px;margin-top: 30px; "><h3>Profile</h3></label><br><br>
+
+            <div class="row">
+                <div class="col-11" style="margin-left: 20px">
+                    <ul>
+                        {% for bc in cv.profinfo.all %}
+                            <li><h5>{{ bc.info }}</h5></li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+
+            <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:50px;margin-top: 30px; "><h3>PROFESSIONAL EDUCATION</h3></label><br><br>
+            {% for edu in detail.education.all %}
+                <div class="row" >
+                    <div class="col" style="margin-left: 30px" >
+                        <h3>{{ edu.degree}}</h3>
+
+                        <ul>
+                            <li>
+                                <h5>{{ edu.startingdate}} ----  {{ edu.endingdate }}</h5>
+                            </li>
+                            <li>
+                                <h5>{{ edu.institute }}</h5>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+            <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:40px;margin-top: 30px; "><h3>SKILLS</h3></label><br><br>
+
+            <div class="row" >
+                {% for skill in detail.skills.all %}
+                    <div class="col-5"  style="margin-left: 40px">
+                        <UL> <li><h5>{{ skill.skills}}
+                        </h5></li></UL>
+                    </div>
+                {% endfor %}
+                }
+            </div>
+
+
+            <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:40px;margin-top: 30px; "><h3>WORK EXPERIENCE</h3></label><br><br>
+            {% for exp in detail.experience.all %}
+                <div class="row" >
+                    <div class="col"  style="margin-left: 40px">
+                        <h4>{{ exp.organization }}
+                        </h4>
+                        <span style="display: flex">
+                       <h5>{{ exp.startingDate }} </h5>
+                           <h7 > --- </h7>
+<h5> {{ exp.endingDate }}</h5>
+                   </span>
+                        <ul>
+                            <li>
+                                <h5>{{ exp.responsibilities}}</h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:40px;margin-top: 30px; "><h4>SOME RECOMMENDATIONS</h4></label><br><br>
+            {% for rec in cv.recommend.all %}
+                <div class="form-group" style="margin-left: 40px">
+                    <h5>{{ rec.recomend }}</h5>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-9"><span></span></div>
+                    <div class="col-3">
+                        <h5> ~ {{rec.recomendby}}
+                        </h5>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </form>
+    </main>
+
+
+
+
+    </main>
+
+
+{% endblock %}

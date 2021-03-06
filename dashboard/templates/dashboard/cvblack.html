@@ -1,0 +1,117 @@
+{% extends 'basetemplate.html' %}
+{% load static %}
+{%block content  %}
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <a  href="{% url 'dashboard:printblackcv' cv.id %}"  target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fas fa-print"></i> Print CV</a>
+        <div class="container-fluid" style="height: 100%">
+            <div class="row" style="background-color: black; color: white ; padding-top: 20px ; height: 300px ; background-image: url({% static 'woodhr.jpg' %})">
+                <div style="margin-left: 30px; margin-bottom: 30px; margin-top: 40px">
+                    <h1>{{ detail.name }}</h1> <br>
+                    {% for pro in cv.professsioncv2.all %}
+                        <h1>{{ pro.procv2 }}</h1>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4" style="color: white; padding-top: 30px; background-image: url({% static 'wood.jpg' %});">
+                    <div style="margin-left: 30px; margin-bottom: 30px">
+                        <h4 style="color:  #38b6ff"> Areas of Expertise </h4>
+                        {% for aox in cv.area_of_expertisecv2.all %}
+                            <p>{{ aox.areaofexpertisecv2 }}</p>
+                        {% endfor %}
+                    </div>
+                    <div style="margin-left: 30px; margin-bottom: 30px">
+                        <h4 style="color:  #38b6ff"> Books Authored </h4>
+                        {% for boa in cv.books_authored.all %}
+                            <p>{{ boa.bookscv2 }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div style="margin-left: 30px; margin-bottom: 30px">
+                        <h4 style="color:  #38b6ff"> Refferences </h4>
+                        {% for ref in cv.referencescv2.all %}
+                            <h6>{{ ref.refcv2 }}</h6>
+                            <h6>{{ref.orgcv2 }}</h6>
+                            <h6>{{ref.emailcv2 }}</h6>
+                        {% endfor %}
+                    </div>
+                    {#Confu....#}
+                    <div style="margin-left: 30px; margin-bottom: 30px">
+                        <h4 style="color:  #38b6ff"> Contact </h4>
+                        <h7>sagar@sagarbansal.com</h7>
+                        <h6>For More Info, </h6>
+                        <h6>Just Google My Name :)</h6>
+
+                    </div>
+
+                </div>
+
+                <div class="col-8" style="padding-top: 30px">
+                    <div>
+                        <h4>Who is {{ detail.name }}</h4>
+                        {% for intro in cv.introductioncv2.all %}
+
+
+
+                            <p>{{ intro.introcv2 }}</p>
+                        {% endfor %}
+                    </div>
+                    <hr  style="background-color: #38b6ff; height: 10px">
+
+                    <div>
+                        <h4>Professional Experience </h4>
+                        {% for exp in detail.experience.all %}
+
+                            <h6>{{ exp.organization }} </h6>
+
+                            <p>{{ exp.previousDesignation}} - {{ exp.startingDate }} to {{ exp.endingDate }}</p>
+
+                            <h4>SUBJECT MATTER EXPERTISE EXPERIENCE </h4>
+                            <h7>Sagar is one of the 47 Board Members on EC-Council Governance
+                                Board For Ethical Hacking - IMEA Region. He is also one of the 34 Career
+                                Mentors for Cybrary, Further Sagar is helping Udacity by Designing the
+                                world's first NANO DEGREE in Information Security</h7>
+                        {% endfor %}
+
+                    </div>
+
+                    <hr  style="background-color: #38b6ff; height: 10px">
+
+                    <div>
+                        <h4>PROFESSIONAL CERTIFICATIONS</h4>
+                        {% for cer in cv.certificatecv2.all %}
+                        <h6>{{ cer.certcv2 }} </h6>
+                        {% endfor %}
+                        <h7></h7>
+
+
+                    </div>
+
+                    <hr  style="background-color: #38b6ff; height: 10px">
+
+                    <div>
+                        <h4>Awards</h4>
+                        {% for awd in cv.awardscv2.all %}
+                        <h6>{{ awd.awcv2 }}</h6>
+                        {% endfor %}
+
+{#                        <h4>AIM - ARENA INTERNATIONAL MASTER</h4>#}
+{#                        <h6>World Chess Federation - FIDE | Sepetember 2018 </h6>#}
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+{% endblock %}

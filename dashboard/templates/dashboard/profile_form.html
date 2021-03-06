@@ -1,0 +1,157 @@
+{% extends 'basetemplate.html' %}
+
+{%block content  %}
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Profile Page</h1>
+            <a href="{% url 'dashboard:updateinfo' id=id %}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> Edit</a>
+        </div>
+
+        <form  class="form-group " action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col">
+                    <label  for="fname" >First name:</label><br>
+                    <input class="form-control" type="text" id="fname" name="fname" >
+                </div>
+                <div class="col">
+                    <label  for="lname">Last name:</label><br>
+                    <input class="form-control" type="text" id="lname" name="lname" >
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label  for="age">Age</label><br>
+                    <input class="form-control" type="number" id="age" name="age" >
+                </div>
+
+                <div class="col">
+                    <label >Gender </label><br>
+                    <select name="gender" class="form-control">
+                        <option value="Male" >Male</option>
+                            <option value="Female"  >Female</option>
+                    </select>
+                </div>
+            </div>
+            <br><br>
+        <h2>Contact</h2>
+            <div class="row">
+                <div class="col">
+                    <label >Email </label><br>
+                    <input class="form-control" type="text" name="email">
+                </div>
+                 <div class="col">
+                    <label >Contac no </label><br>
+                    <input class="form-control" type="text"  name="contact1">
+                </div>
+
+                <div class="col">
+                    <label > Contact no </label><br>
+                    <input class="form-control" type="text" name="contact2">
+                </div>
+                 <div class="col">
+                    <label >Linked In </label><br>
+                    <input class="form-control" type="text" name="linkedin">
+                </div>
+
+            </div>
+
+         <div class="row">
+                <div class="col">
+                    <label >Address </label><br>
+                    <input class="form-control" type="text" name="address">
+                </div>
+            </div>
+
+        <br><br>
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>Education</h2></div>
+                <div id="AddMoreFileId" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreFileBox" class="btn btn-info pull-right mb-4">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                        <span class="text"> Add Educational Information</span>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="card-body" style="padding-bottom: 0px">
+                <div id="InputsWrapper" class="mb-4">
+                    <div class="row col-md-12">
+                        <a href="#" class="removeclass"></a>
+                        <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                            <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Institue</label> <input class="form-control" type="text" name="Institute[]"   placeholder="Institute" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Board / University</label> <input class="form-control" type="text" name="Board_Uni[]"   placeholder="Board / University" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Degree</label> <input class="form-control" type="text" name="Degree[]"   placeholder="Degree" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">From</label> <input id="from" class="form-control" type="date" name="PassingYear[]"   placeholder="Passing Year" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">TO</label> <input id="to" class="form-control" type="date" name="enddate[]"   placeholder="Passing Year" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Result</label> <input class="form-control" type="text" name="Result[]"  placeholder="Result" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Number / CGPA</label> <input class="form-control" type="text" name="Number_CGPA[]"   placeholder="Number / CGPA" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lineBreak"></div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between  mb-3">
+                <div>   <h2>Experience</h2> </div>
+                <div id="AddMoreFileId1" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreFileBox1" class="btn btn-info pull-right mb-4">
+                               <span class="icon text-white">
+                                    <i class="fas fa-plus"></i>
+                               </span>
+                        <span class="text"> Add Professional Information</span>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body" style="padding-bottom: 0px">
+                <div id="InputsWrapper1" class="mb-4">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Organization</label> <input class="form-control" type="text" name="Organization[]"  placeholder="Organization" /></div></div>
+                        <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Previous Designation</label> <input class="form-control" type="text" name="Previous_Designation[]"  placeholder="Previous Designation" /></div></div>
+                        <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">From Date</label> <input class="form-control" type="date" name="FromDate[]"  placeholder="From Date" /></div></div>
+                        <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">To Date</label> <input class="form-control" type="date" name="ToDate[]"  placeholder="To Date" /></div></div>
+                        <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Responsibility</label> <input class="form-control" type="text" name="Responsibility[]"  placeholder="Responsibility" /></div></div>
+                    </div>
+                </div>
+                <div id="lineBreak1"></div>
+            </div>
+
+        <br>
+
+
+         <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>Skills</h2></div>
+                <div id="AddMoreSkillId" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreSkillBox" class="btn btn-info pull-right mb-4">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                        <span class="text"> Add More Skills</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+                <div id="InputsSkills" class="mb-4">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Skills</label> <input class="form-control" type="text" name="Skills[]"  placeholder="Skills" /></div></div>
+                    </div>
+                </div>
+                <div id="lineBreak1"></div>
+            </div>
+
+        <br>
+
+            <div style="text-align: center;"><input class="col-md-5 form-control btn btn-primary" type="submit" value="create"></div></div>
+            </div>
+        </form>
+    </main>
+
+{% endblock %}

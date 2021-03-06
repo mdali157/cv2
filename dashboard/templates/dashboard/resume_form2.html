@@ -1,0 +1,567 @@
+{% extends 'basetemplate.html' %}
+{% load static %}
+
+{%block content  %}
+
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1>Resume Form</h1>
+        </div>
+        <form class="form-group " action="{% url 'dashboard:resumeform2' %} " method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {#TitleCv2#}
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>CV Title</h2></div>
+                <div id="AddMoreTitleCv2Id" style="text-align: right">
+
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+
+                <div id="InputsTitleCv2" class="mb-2">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Title</label> <input class="form-control" type="text" name="titelecv2[]"   placeholder="Cv Title" /></div></div>
+                    </div>
+                </div>
+                <div id="InputsTitleCv2"></div>
+                <div id="lineBreak1"></div>
+            </div>
+
+
+
+
+            {#            ProfessionCV2#}
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>Profession</h2></div>
+                <div id="AddMoreProfessionId" style="text-align: right">
+
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+
+                <div id="InputsProfession" class="mb-2">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Profession</label> <input class="form-control" type="text" name="profession[]"   placeholder="Cv Profession" /></div></div>
+                    </div>
+                </div>
+                <div id="InputsProfession"></div>
+                <div id="lineBreak1"></div>
+            </div>
+
+
+
+            {#        Introduction#}
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>Introduction</h2></div>
+                <div id="AddMoreIntroductionId" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreIntroductionBox" class="btn btn-info pull-right mb-2">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                        <span class="text"> Add Your Introduction</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+                <div id="InputsIntroduction" class="mb-2">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-7"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Introduction</label> <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your Introduction" name="Introduction[]" rows="1" style="resize: none"></textarea></div></div>
+                    </div>
+                </div>
+                <div id="lineBreak1"></div>
+            </div>
+
+
+            {#Areaofexpertise#}
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>Area Of Expertise</h2></div>
+                <div id="AddMoreAreaofexpertiseId" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreAreaofexpertiseBox" class="btn btn-info pull-right mb-2">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                        <span class="text"> Add Your Area of Expertise</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+
+                <div id="InputsAreaofexpertise" class="mb-2">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Area Of Expertise</label> <input class="form-control" type="text" name="Areaofexpertise[]"   placeholder="Enter Your Area of Expertise" /></div></div>
+                    </div>
+                </div>
+                <div id="InputsAreaofexpertise"></div>
+                <div id="lineBreak1"></div>
+            </div>
+
+
+            {#BooksAuthored#}
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>Books Authored</h2></div>
+                <div id="AddMoreBooksAuthoredId" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreABooksAuthoredBox" class="btn btn-info pull-right mb-2">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                        <span class="text"> Add Your Books Authored</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+
+                <div id="InputsBooksAuthored" class="mb-2">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Books Authored</label> <input class="form-control" type="text" name="BooksAuthored[]"   placeholder="Enter Your BooksAuthored" /></div></div>
+                    </div>
+                </div>
+                <div id="InputsBooksAuthored"></div>
+                <div id="lineBreak1"></div>
+            </div>
+
+            {#CertificateCV2#}
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>Certificate</h2></div>
+                <div id="AddMoreCertificateCV2Id" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreCertificateCV2Box" class="btn btn-info pull-right mb-2">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                        <span class="text"> Add Your Certificates</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+
+                <div id="InputsCertificateCV2" class="mb-2">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Certificate</label> <input class="form-control" type="text" name="certificatecv2[]"   placeholder="Enter Your Certificate" /></div></div>
+                    </div>
+                </div>
+                <div id="InputsCertificateCV2"></div>
+                <div id="lineBreak1"></div>
+            </div>
+
+
+
+            {#References#}
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>References</h2></div>
+                <div id="AddMoreReferencesId" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreReferencesBox" class="btn btn-info pull-right mb-2">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                        <span class="text"> Add SOME References</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+                <div id="InputsReferences" class="mb-4">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">References</label> <input class="form-control" type="text" name="ref[]"   placeholder="Enter Your References" /></div></div>
+                        <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Organization</label> <input class="form-control" type="text" name="org[]"   placeholder="Enter Your Organization" /></div></div>
+                        <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Email</label> <input class="form-control" type="text" name="email[]"   placeholder="Enter Your Email" /></div></div>
+
+                    </div>
+                </div>
+                <div id="lineBreak1"></div>
+            </div>
+
+
+            {#Awards#}
+            <div class="d-flex justify-content-between  mb-3">
+                <div> <h2>Awards</h2></div>
+                <div id="AddMoreAwardsCId" style="text-align: right">
+                    <button type="button" name="addP" id="AddMoreAwardsBox" class="btn btn-info pull-right mb-2">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                        <span class="text"> Add Your Awards</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body" style="padding-bottom: 0px">
+
+                <div id="InputsAwards" class="mb-2">
+                    <div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;">
+                        <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Awards</label> <input class="form-control" type="text" name="awards[]"   placeholder="Enter Your Awards" /></div></div>
+                    </div>
+                </div>
+                <div id="InputsAwards"></div>
+                <div id="lineBreak1"></div>
+            </div>
+            <button class="btn btn-dark"style="margin-top: 10px;color: white;"  >Generate CV</button>
+
+
+        </form>
+    </main>
+
+{#Title#}
+    <script>
+        $(document).ready(function() {
+
+            var InputsWrapper = $("#InputsTitleCv2"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreTitleCv2Id"); //Add button ID
+
+            var x = InputsWrapper.length; //initlal text box count
+            var FieldCountTitleCv2 = 1; //to keep track of text box added
+
+            //on add input button click
+            $(AddButton).click(function(e) {
+                //max input box allowed
+                FieldCountTitleCv2++; //text box added ncrement
+                //add input box
+                $(InputsWrapper).append('<div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;"> <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Title</label> <input class="form-control" type="text" name="titelecv2[]"  placeholder="Enter Your Title"  id="field_' + FieldCountTitleCv2 + '"/></div></div> <a href="#" class="removeclass btn btn-danger mt-4 mr-1 ml-5 mb-4">DELETE</a>   </div>');
+                x++; //text box increment
+
+                $("#AddMoreTitleCv2Id").show();
+
+                $('AddMoreTitleCv2Box').html("Add field");
+
+
+                return false;
+            });
+
+            $("body").on("click", ".removeclass", function(e) { //user click on remove text
+                if (x > 1) {
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+
+                    $("#AddMoreTitleCv2Id").show();
+
+                    $("#lineBreak").html("");
+
+                    // Adds the "add" link again when a field is removed.
+                    $('AddMoreTitleCv2Box').html("Add field");
+                }
+                return false;
+            })
+
+        });
+    </script>
+
+
+    {#Profession#}
+    <script>
+        $(document).ready(function() {
+
+            var InputsWrapper = $("#InputsProfession"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreProfessionId"); //Add button ID
+
+            var x = InputsWrapper.length; //initlal text box count
+            var FieldCountProfessione = 1; //to keep track of text box added
+
+            //on add input button click
+            $(AddButton).click(function(e) {
+                //max input box allowed
+                FieldCountProfession++; //text box added ncrement
+                //add input box
+                $(InputsWrapper).append('<div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;"> <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Title</label> <input class="form-control" type="text" name="profession[]"  placeholder="Enter Your Profession"  id="field_' + FieldCountProfession + '"/></div></div> <a href="#" class="removeclass btn btn-danger mt-4 mr-1 ml-5 mb-4">DELETE</a>   </div>');
+                x++; //text box increment
+
+                $("#AddMoreProfessionId").show();
+
+                $('AddMoreProfessionBox').html("Add field");
+
+
+                return false;
+            });
+
+            $("body").on("click", ".removeclass", function(e) { //user click on remove text
+                if (x > 1) {
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+
+                    $("#AddMoreProfessionId").show();
+
+                    $("#lineBreak").html("");
+
+                    // Adds the "add" link again when a field is removed.
+                    $('AddMoreProfessionBox').html("Add field");
+                }
+                return false;
+            })
+
+        });
+    </script>
+
+
+    {#Introduction#}
+
+    <script>
+        $(document).ready(function() {
+
+            var InputsWrapper = $("#InputsIntroduction"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreIntroductionBox"); //Add button ID
+
+            var x = InputsWrapper.length; //initlal text box count
+            var FieldCountIntroduction = 1; //to keep track of text box added
+
+            //on add input button click
+            $(AddButton).click(function(e) {
+                //max input box allowed
+                FieldCountIntroduction++; //text box added ncrement
+                //add input box
+                $(InputsWrapper).append('<div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;"> <div class="col-md-7"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Introduction</label>  <textarea class="form-control" id="exampleFormControlTextarea1"  placeholder="Enter your Introduction" name="Introduction[]" rows="1" style="resize: none" id="field_' + FieldCountIntroduction + '"></textarea></div></div> <a href="#" class="removeclass btn btn-danger mt-4 mr-1 ml-5 mb-4">DELETE</a>   </div>');
+                x++; //text box increment
+
+                $("#AddMoreIntroductionId").show();
+
+                $('AddMoreIntroductionBox').html("Add field");
+
+
+                return false;
+            });
+
+            $("body").on("click", ".removeclass", function(e) { //user click on remove text
+                if (x > 1) {
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+
+                    $("#AddMoreIntroductionId").show();
+
+                    $("#lineBreak").html("");
+
+                    // Adds the "add" link again when a field is removed.
+                    $('AddMoreIntroductionBox').html("Add field");
+                }
+                return false;
+            })
+
+        });
+    </script>
+
+
+    {#Areaofexpertise#}
+    <script>
+        $(document).ready(function() {
+
+            var InputsWrapper = $("#InputsAreaofexpertise"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreAreaofexpertiseBox"); //Add button ID
+
+            var x = InputsWrapper.length; //initlal text box count
+            var FieldCountAreaofexpertise = 1; //to keep track of text box added
+
+            //on add input button click
+            $(AddButton).click(function(e) {
+                //max input box allowed
+                FieldCountAreaofexpertise++; //text box added ncrement
+                //add input box
+                $(InputsWrapper).append('<div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;"> <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Area Of Expertise</label> <input class="form-control" type="text" name="Areaofexpertise[]"  placeholder="Enter Your Area Of Expertise"  id="field_' + FieldCountAreaofexpertise + '"/></div></div> <a href="#" class="removeclass btn btn-danger mt-4 mr-1 ml-5 mb-4">DELETE</a>   </div>');
+                x++; //text box increment
+
+                $("#AddMoreAreaofexpertiseId").show();
+
+                $('AddMoreAreaofexpertiseBox').html("Add field");
+
+
+                return false;
+            });
+
+            $("body").on("click", ".removeclass", function(e) { //user click on remove text
+                if (x > 1) {
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+
+                    $("#AddMoreAreaofexpertiseId").show();
+
+                    $("#lineBreak").html("");
+
+                    // Adds the "add" link again when a field is removed.
+                    $('AddMoreAreaofexpertiseBox').html("Add field");
+                }
+                return false;
+            })
+
+        });
+    </script>
+
+    {#BooksAuthored#}
+    <script>
+        $(document).ready(function() {
+
+            var InputsWrapper = $("#InputsBooksAuthored"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreABooksAuthoredBox"); //Add button ID
+
+            var x = InputsWrapper.length; //initlal text box count
+            var FieldCountBooksAuthored = 1; //to keep track of text box added
+
+            //on add input button click
+            $(AddButton).click(function(e) {
+                //max input box allowed
+                FieldCountBooksAuthored++; //text box added ncrement
+                //add input box
+                $(InputsWrapper).append('<div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;"> <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">BooksAuthored</label> <input class="form-control" type="text" name="BooksAuthored[]"  placeholder="Enter Your Books Authored"  id="field_' + FieldCountBooksAuthored + '"/></div></div> <a href="#" class="removeclass btn btn-danger mt-4 mr-1 ml-5 mb-4">DELETE</a>   </div>');
+                x++; //text box increment
+
+                $("#AddMoreBooksAuthoredId").show();
+
+                $('AddMoreBooksAuthoredBox').html("Add field");
+
+
+                return false;
+            });
+
+            $("body").on("click", ".removeclass", function(e) { //user click on remove text
+                if (x > 1) {
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+
+                    $("#AddMoreBooksAuthoredId").show();
+
+                    $("#lineBreak").html("");
+
+                    // Adds the "add" link again when a field is removed.
+                    $('AddMoreABooksAuthoredBox').html("Add field");
+                }
+                return false;
+            })
+
+        });
+    </script>
+
+    {#CertificatteCV2#}
+    <script>
+        $(document).ready(function() {
+
+            var InputsWrapper = $("#InputsCertificateCV2"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreCertificateCV2Box"); //Add button ID
+
+            var x = InputsWrapper.length; //initlal text box count
+            var FieldCountCertificateCV2 = 1; //to keep track of text box added
+
+            //on add input button click
+            $(AddButton).click(function(e) {
+                //max input box allowed
+                FieldCountCertificateCV2++; //text box added ncrement
+                //add input box
+                $(InputsWrapper).append('<div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;"> <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Certificate</label> <input class="form-control" type="text" name="certificatecv2[]"  placeholder="Enter Your Certificates"  id="field_' + FieldCountCertificateCV2 + '"/></div></div> <a href="#" class="removeclass btn btn-danger mt-4 mr-1 ml-5 mb-4">DELETE</a>   </div>');
+                x++; //text box increment
+
+                $("#AddMoreCertificateCV2Id").show();
+
+                $('AddMoreCertificateCV2Box').html("Add field");
+
+
+                return false;
+            });
+
+            $("body").on("click", ".removeclass", function(e) { //user click on remove text
+                if (x > 1) {
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+
+                    $("#AddMoreCertificateCV2Id").show();
+
+                    $("#lineBreak").html("");
+
+                    // Adds the "add" link again when a field is removed.
+                    $('AddMoreCertificateCV2Box').html("Add field");
+                }
+                return false;
+            })
+
+        });
+    </script>
+{#References#}
+    <script>
+        $(document).ready(function() {
+
+            var InputsWrapper = $("#InputsReferences"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreReferencesBox"); //Add button ID
+
+            var x = InputsWrapper.length; //initlal text box count
+            var FieldCountReferences = 1; //to keep track of text box added
+
+            //on add input button click
+            $(AddButton).click(function(e) {
+                //max input box allowed
+                FieldCountReferences++; //text box added ncrement
+                //add input box
+                $(InputsWrapper).append('<div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;"> <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">References</label> <input class="form-control" type="text" name="ref[]"   placeholder="Enter Your References" id="field_' + FieldCountReferences + ' "/></div></div> <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Organization</label> <input class="form-control" type="text" name="org[]"   placeholder="Enter Your Organization" /></div></div> <div class="col-md-3"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Email</label> <input class="form-control" type="text" name="email[]"   placeholder="Enter Your Email" /></div></div> <a href="#" class="removeclass btn btn-danger mt-4 mr-1 ml-5 mb-4">DELETE</a>   </div>');
+                x++; //text box increment
+
+                $("#AddMoreReferencesId").show();
+
+                $('AddMoreReferencesBox').html("Add field");
+
+
+                return false;
+            });
+
+            $("body").on("click", ".removeclass", function(e) { //user click on remove text
+                if (x > 1) {
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+
+                    $("#AddMoreReferencesId").show();
+
+                    $("#lineBreak").html("");
+
+                    // Adds the "add" link again when a field is removed.
+                    $('AddMoreReferencesBox').html("Add field");
+                }
+                return false;
+            })
+
+        });
+    </script>
+
+    {#Awards#}
+    <script>
+        $(document).ready(function() {
+
+            var InputsWrapper = $("#InputsAwards"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreAwardsBox"); //Add button ID
+
+            var x = InputsWrapper.length; //initlal text box count
+            var FieldCountAwards = 1; //to keep track of text box added
+
+            //on add input button click
+            $(AddButton).click(function(e) {
+                //max input box allowed
+                FieldCountAwards++; //text box added ncrement
+                //add input box
+                $(InputsWrapper).append('<div class="row" style="border-bottom-style: solid; border-bottom-width: thin; margin-top: 1%; border-bottom-color: #d6d6d6;"> <div class="col-md-5"><div class="form-group"><label class="bmd-label-floating" style="font-weight: bold; color: black;">Awards</label> <input class="form-control" type="text" name="awards[]"  placeholder="Enter Your Awards"  id="field_' + FieldCountAwards + '"/></div></div> <a href="#" class="removeclass btn btn-danger mt-4 mr-1 ml-5 mb-4">DELETE</a>   </div>');
+                x++; //text box increment
+
+                $("#AddMoreAwardsId").show();
+
+                $('AddMoreAwardsBox').html("Add field");
+
+
+                return false;
+            });
+
+            $("body").on("click", ".removeclass", function(e) { //user click on remove text
+                if (x > 1) {
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+
+                    $("#AddMoreAwardsId").show();
+
+                    $("#lineBreak").html("");
+
+                    // Adds the "add" link again when a field is removed.
+                    $('AddMoreAwardsBox').html("Add field");
+                }
+                return false;
+            })
+
+        });
+    </script>
+
+
+{% endblock %}

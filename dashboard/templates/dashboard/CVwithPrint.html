@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+
+<form  class="form-group " action="" method="post" enctype="multipart/form-data">
+
+
+    <div style="display: flex;">
+
+    </div>
+    <div class="row">
+        <div class="col-10">
+        <span >
+        </span>
+        </div>
+
+        <div class="col-2" style="display: flex;text-align: center;margin-bottom: 4px;" >
+            <i class="fas fa-envelope fa-2x" style="margin-right: 4px;color: #190080;"></i>
+
+            <h6>{{ detail.email }}</h6>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-10">
+        <span >
+        </span>
+        </div>
+        <div class="col-2" style="display: flex;text-align: center;margin-bottom: 4px;" >
+            <i class="fas fa-phone-square-alt fa-2x" style="margin-right: 4px;color: #190080;"></i>
+
+            <h6>{{ detail.contactno1 }}</h6>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-10">
+        <span >
+        </span>
+        </div>
+
+
+        <div class="col-2" style="display: flex;text-align: center;margin-bottom: 4px;" >
+            <i class="fas fa-map-marker-alt fa-2x" style="margin-right: 4px;color: #190080;"></i>
+
+            <h6>{{ detail.address }}</h6>
+        </div>
+
+    </div>
+
+    <div class="row" >
+    <div class="col-1">
+        <span></span>
+      </div>
+        <div class="col-6" >
+            <h2>{{ detail.name}}</h2>
+            {% for cer in cv.certificate.all %}
+                <h4>  {{  cer.cert }} | </h4>
+            {% endfor %}
+            {% for pro in cv.profession.all %}
+                <h4>{{ pro.profession}}</h4>
+            {% endfor %}
+            <h4>{{ detail.linkedin }}</h4>
+            <div class="row" style="margin-left: 1px ">
+
+                <h6>   </h6>
+
+            </div>
+
+            <h6></h6>
+
+            <h6></h6>
+        </div>
+    </div>
+    <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:40px;margin-top: 30px; "><h3>Profile</h3></label><br><br>
+
+    <div class="row">
+        <div class="col-11" style="margin-left: 20px">
+            <ul>
+                {% for xy in cv.profinfo.all %}
+                    <li><h5>{{ xy.info }}</h5></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:50px;margin-top: 30px; "><h3>PROFESSIONAL EDUCATION</h3></label><br><br>
+
+{% for edu in detail.education.all %}
+            <div class="row" >
+                <div class="col" style="margin-left: 30px" >
+                    <h3>{{ edu.degree}}</h3>
+
+                    <ul>
+                        <li>
+                            <h5>{{ edu.startingdate}} ----  {{ edu.endingdate }}</h5>
+                        </li>
+                        <li>
+                            <h5>{{ edu.institute }}</h5>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+
+
+
+    <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:40px;margin-top: 30px; "><h3>SKILLS</h3></label><br><br>
+
+   <div class="row" >
+                {% for skill in detail.skills.all %}
+                    <div class="col-5"  style="margin-left: 40px">
+                        <UL> <li><h5>{{ skill.skills}}
+                        </h5></li></UL>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+
+
+    <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:40px;margin-top: 30px; "><h3>WORK EXPERIENCE</h3></label><br><br>
+     {% for exp in detail.experience.all %}
+                <div class="row" >
+                    <div class="col"  style="margin-left: 40px">
+                        <h4>{{ exp.organization }}
+                        </h4>
+                        <span style="display: flex">
+                       <h5>{{ exp.startingDate }} </h5>
+                           <h7 > --- </h7>
+<h5> {{ exp.endingDate }}</h5>
+                   </span>
+                        <ul>
+                            <li>
+                                <h5>{{ exp.responsibilities}}</h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+    <label style="background-color: #190080;color: white;padding-left: 50px;padding-right:40px;margin-top: 30px; "><h4>SOME RECOMMENDATIONS</h4></label><br><br>
+    {% for rec in cv.recommend.all %}
+                <div class="form-group" style="margin-left: 40px">
+                    <h5>{{ rec.recomend }}</h5>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-9"><span></span></div>
+                    <div class="col-3">
+                        <h5> ~ {{rec.recomendby}}
+                        </h5>
+                    </div>
+                </div>
+            {% endfor %}
+
+</form>
+<script>
+        function codeAddress() {
+            window.print();
+
+        }
+        window.onload = codeAddress;
+
+</script>
+
+</body>
+</html>
